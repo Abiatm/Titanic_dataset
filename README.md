@@ -10,8 +10,9 @@
 - [Recommendations](#recommendations)
 ### Overview
 This analysis focus on identifying the key features that contribute to survival rate of passengers and by  feature selection and analysis recommendation were provided.
+![ATMpyCharts](https://github.com/Abiatm/Titanic_dataset/assets/153201833/9aa9991e-d730-4d96-9bac-1375fa50d4f6)
 
-
+![Pynlargest](https://github.com/Abiatm/Titanic_dataset/assets/153201833/14522a2d-7934-4e99-9084-2f188998ec44)
 ### Aim
 This work aim at visualizing various survival possibilities with respects to different features.
 
@@ -19,7 +20,7 @@ This work aim at visualizing various survival possibilities with respects to dif
 The dataset used for this analysis is the from Kaggle
 [Download here]( https://www.kaggle.com/c/titanic/data?select=train.csv)
 ### Tools Used
-- Python(Jupyter  Notebook) - Data cleaning,Data munging, Data visualization
+- Python(Jupyter_Notebook) - Data cleaning,Data munging, Data visualization
 - PowerBi- visualization validation
 - Excel- Data cleaning validation
 ### Data Cleaning
@@ -32,8 +33,46 @@ The dataset used for this analysis is the from Kaggle
   -Filling of null values where necessary
 - cleaning operation
  ### Data Analysis
-```SQL
-1	SELECT sum(total_price)  as Total_Revenue FROM spizza.`pizza_sales_excel_file - copy`;
+```Python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot  as plt
+import seaborn as sns
+%matplotlib inline
+df_train["Family_size"] = 1 +  df_train['SibSp'] + df_train['Parch']
+A=df_train["Name"].str.split(pat=",",expand=True)[1].str.split(pat=".",expand=True)
+A[0]
+A["Title"] =A[0]
+df_N = pd.concat([df_train,A["Title"]],axis ="columns")
+df_N["Age"].fillna(df_N["Age"].median(),inplace =True)
+DA=df_N
+
+fig = plt.figure(figsize=(15,10))
+
+
+plt.subplots_adjust(wspace=0.15)
+plt.style.use("seaborn-white")
+
+fig.add_subplot(2, 2, 1)
+
+sns.countplot(x= DA["Pclass"],hue =DA["Survived"],data=DA,edgecolor='black', linewidth=1,palette='PuBu')
+
+fig.add_subplot(2, 2, 2)
+sns.countplot(x= DA["Sex"],hue="Survived",data=DA,edgecolor='black', linewidth=1,palette='PuBu',width =0.8)
+
+fig.add_subplot(2, 2, 3)
+sns.countplot(x= DA["Embarked"],data=DA,edgecolor='black', linewidth=1,palette='BrBG')
+
+
+
+fig.add_subplot(2, 2, 4)
+
+sns.countplot(x= DA["Pclass"],hue =DA["Sex"],data=DA,edgecolor='black', linewidth=1,palette='GnBu')
+
+
+
+
+plt.show()
 ```
 ### Results
 The results from my observation shows:
