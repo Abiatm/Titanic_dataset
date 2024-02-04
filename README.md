@@ -27,10 +27,10 @@ The dataset used for this analysis is the from Kaggle
  #### List of things checked and evaluated are:
  - Trimming of data
  - Removal of duplicates
- - Converting text to columns
-- Adding new column (eg Family_size column,Title column)
- - Filtering and droping of column with high percentage of null values
-  -Filling of null values where necessary
+ 
+ - Adding new column (eg Family_size column,Title column)
+- Filtering and droping of column with high percentage of null values
+- Filling of null values where necessary
 - cleaning operation
  ### Data Analysis
 ```Python
